@@ -1,0 +1,46 @@
+
+
+
+html {
+
+
+    background-image: linear-gradient(pink,blue);
+    border: 15px solid teal;
+
+}
+
+
+
+div {
+    font-size: 25px;
+    width: 50%;
+    border-color: gray;
+}
+
+h1 {
+    width: 30%;
+    font-size: 35px;
+    color: green;
+}
+
+#h2 {
+    color: violet;
+}
+
+
+#clickAxolotl {
+    border: 12px solid black;
+
+    width: 300px;
+    display: list-item;
+}
+
+button {
+
+    height: 75px;
+    width: 300px;
+    display: list-item;
+}
+
+
+
