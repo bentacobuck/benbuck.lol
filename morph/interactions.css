@@ -1,0 +1,26 @@
+
+/* =================================
+  Photo 3D Transforms & Transitions
+==================================== */
+
+.content {
+    perspective: 1000px;
+}
+
+.photo-container {
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.photo:hover {
+    transform: rotateX(180deg);
+}
+
+.side-a,
+.sibe-b {
+    backface-visibility: hidden;
+}
+
+.side-b {
+    transform: rotateX(180deg);
+}
