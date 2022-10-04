@@ -19,9 +19,6 @@ var clickAxolotlTwo = getElement("clickAxolotlTwo");
 var clickAxolotlThree = getElement("clickAxolotlThree");
 var clickAxolotlFour = getElement("clickAxolotlFour");
 var clickAxolotlFive = getElement("clickAxolotlFive");
-var clickAxolotlSix = getElement("clickAxolotlSix");
-var clickAxolotlSeven = getElement("clickAxolotlSeven");
-var clickAxolotlEight = getElement("clickAxolotlEight");
 var clickAxolotlNine = getElement("clickAxolotlNine");
 var clickAxolotlTen = getElement("clickAxolotlTen");
 var clickAxolotlEleven = getElement("clickAxolotlEleven");
@@ -45,6 +42,12 @@ var clickAxolotlTwenty_Eight = getElement("clickAxolotlTwenty-Eight");
 var clickAxolotlTwenty_Nine = getElement("clickAxolotlTwenty-Nine");
 var clickAxolotlThirty = getElement("clickAxolotlThirty");
 var clickAxolotlThirty_One = getElement("clickAxolotlThirty-One");
+var clickAxolotlThirty_Two = getElement("clickAxolotlThirty-Two");
+var clickAxolotlThirty_Three = getElement("clickAxolotlThirty-Three");
+var clickAxolotlThirty_Four = getElement("clickAxolotlThirty-Four");
+
+
+
 
 var banana = getElement("taco-burger-baby");
 var dipCookies = getElement("dipCookies");
