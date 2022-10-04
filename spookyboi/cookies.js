@@ -112,7 +112,7 @@ clickAxolotlTwo.addEventListener("click",(event) => {
         YoMAMA.play();
         updateDisplayWithoutAddingPoints();
     } else {
-        alert("Sorry, you don't have enough Axolotl Points, keep gaming!");
+
     }
 });
 
@@ -124,7 +124,7 @@ clickAxolotlThree.addEventListener("click",(event) => {
         YoMAMA.play();
         updateDisplayWithoutAddingPoints();
     } else {
-        alert("Sorry, you don't have enough Axolotl Points, keep gaming!");
+
     }
 });
 
@@ -136,7 +136,7 @@ clickAxolotlFour.addEventListener("click",(event) => {
         YoMAMA.play();
         updateDisplayWithoutAddingPoints();
     } else {
-        alert("Sorry, you don't have enough Axolotl Points, keep gaming!");
+
     }
 });
 
@@ -148,8 +148,7 @@ clickAxolotlFive.addEventListener("click",(event) => {
         YoMAMA.play();
         updateDisplayWithoutAddingPoints();
     } else {
-        alert("Sorry, you don't have enough Axolotl Points, keep gaming!");
-    }
+
 });
 
 clickAxolotlSix.addEventListener("click",(event) => {
@@ -160,61 +159,61 @@ clickAxolotlSix.addEventListener("click",(event) => {
         YoMAMA.play();
         updateDisplayWithoutAddingPoints();
     } else {
-        alert("Sorry, you don't have enough Axolotl Points, keep gaming!");
+
     }
 });
 
 clickAxolotlSeven.addEventListener("click",(event) => {
-    if(cookies > 1999) {
-        cookies = cookies - 2000;
-        cookiesPerSecond += 5;
+    if(cookies > 9) {
+        cookies = cookies - 10;
+        cookiesPerSecond += 1;
         var YoMAMA = new Audio('mixkit-game-ball-tap-2073.wav')
         YoMAMA.play();
         updateDisplayWithoutAddingPoints();
     } else {
-        alert("Sorry, you don't have enough Axolotl Points, keep gaming!");
+
     }
 });
 
 clickAxolotlEight.addEventListener("click",(event) => {
-    if(cookies > 499999) {
-        cookies = cookies - 500000;
-        cookiesPerSecond += 120;
+    if(cookies > 2999) {
+        cookies = cookies - 3000;
+        cookiesPerSecond += 500;
         var YoMAMA = new Audio('mixkit-game-ball-tap-2073.wav')
         YoMAMA.play();
         updateDisplayWithoutAddingPoints();
     } else {
-        alert("Sorry, you don't have enough Axolotl Points, keep gaming!");
+
     }
 });
 
 clickAxolotlNine.addEventListener("click",(event) => {
-    if(cookies > 999999) {
-        cookies = cookies - 1000000;
-        cookiesPerSecond += 5000;
+    if(cookies > 7999999999) {
+        cookies = cookies - 7999999999;
+        cookiesPerSecond += 999999999;
         var YoMAMA = new Audio('mixkit-game-ball-tap-2073.wav')
         YoMAMA.play();
         updateDisplayWithoutAddingPoints();
     } else {
-        alert("Sorry, you don't have enough Axolotl Points, keep gaming!");
+
     }
 });
 
 clickAxolotlTen.addEventListener("click",(event) => {
-    if(cookies > 499999999) {
-        cookies = cookies - 500000000;
-        cookiesPerSecond += 100000;
+    if(cookies > 19999999999) {
+        cookies = cookies - 19999999999;
+        cookiesPerSecond += 10000000000;
         var YoMAMA = new Audio('mixkit-game-ball-tap-2073.wav')
         YoMAMA.play();
         updateDisplayWithoutAddingPoints();
     } else {
-        alert("Sorry, you don't have enough Axolotl Points, keep gaming!");
+
     }
 });
 
 clickAxolotlEleven.addEventListener("click",(event) => {
-    if(cookies > 14999999999) {
-        cookies = cookies - 15000000000;
+    if(cookies > 5000000000000) {
+        cookies = cookies - 5000000000000;
         cookiesPerSecond += 2000000;
         var YoMAMA = new Audio('mixkit-game-ball-tap-2073.wav')
         YoMAMA.play();
