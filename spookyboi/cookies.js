@@ -19,6 +19,9 @@ var clickAxolotlTwo = getElement("clickAxolotlTwo");
 var clickAxolotlThree = getElement("clickAxolotlThree");
 var clickAxolotlFour = getElement("clickAxolotlFour");
 var clickAxolotlFive = getElement("clickAxolotlFive");
+var clickAxolotlSix = getElement("clickAxolotlSix");
+var clickAxolotlSeven = getElement("clickAxolotlSeven");
+var clickAxolotlEight = getElement("clickAxolotlEight");
 var clickAxolotlNine = getElement("clickAxolotlNine");
 var clickAxolotlTen = getElement("clickAxolotlTen");
 var clickAxolotlEleven = getElement("clickAxolotlEleven");
@@ -102,9 +105,9 @@ clickAxolotl.addEventListener("mouseup",(event) => {
 
 
 clickAxolotlTwo.addEventListener("click",(event) => {
-    if(cookies > 99) {
-        cookies = cookies - 100;
-        cookieClick += 5;
+    if(cookies > 7) {
+        cookies = cookies - 8;
+        cookieClick += 1;
         var YoMAMA = new Audio('mixkit-game-ball-tap-2073.wav')
         YoMAMA.play();
         updateDisplayWithoutAddingPoints();
@@ -114,9 +117,9 @@ clickAxolotlTwo.addEventListener("click",(event) => {
 });
 
 clickAxolotlThree.addEventListener("click",(event) => {
-    if(cookies > 1399) {
-        cookies = cookies - 1400;
-        cookieClick += 20;
+    if(cookies > 39) {
+        cookies = cookies - 40;
+        cookieClick += 6;
         var YoMAMA = new Audio('mixkit-game-ball-tap-2073.wav')
         YoMAMA.play();
         updateDisplayWithoutAddingPoints();
@@ -126,9 +129,9 @@ clickAxolotlThree.addEventListener("click",(event) => {
 });
 
 clickAxolotlFour.addEventListener("click",(event) => {
-    if(cookies > 9999) {
-        cookies = cookies - 10000;
-        cookieClick += 100;
+    if(cookies > 4999) {
+        cookies = cookies - 5000;
+        cookieClick += 700;
         var YoMAMA = new Audio('mixkit-game-ball-tap-2073.wav')
         YoMAMA.play();
         updateDisplayWithoutAddingPoints();
@@ -138,9 +141,9 @@ clickAxolotlFour.addEventListener("click",(event) => {
 });
 
 clickAxolotlFive.addEventListener("click",(event) => {
-    if(cookies > 199999) {
-        cookies = cookies - 200000;
-        cookieClick += 500;
+    if(cookies > 999999) {
+        cookies = cookies - 1000000;
+        cookieClick += 200000;
         var YoMAMA = new Audio('mixkit-game-ball-tap-2073.wav')
         YoMAMA.play();
         updateDisplayWithoutAddingPoints();
@@ -150,9 +153,9 @@ clickAxolotlFive.addEventListener("click",(event) => {
 });
 
 clickAxolotlSix.addEventListener("click",(event) => {
-    if(cookies > 149) {
-        cookies = cookies - 150;
-        cookiesPerSecond += 1;
+    if(cookies > 999999999999) {
+        cookies = cookies - 999999999999;
+        cookieClick += 2500000000000;
         var YoMAMA = new Audio('mixkit-game-ball-tap-2073.wav')
         YoMAMA.play();
         updateDisplayWithoutAddingPoints();
