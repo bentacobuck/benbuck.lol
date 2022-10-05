@@ -1,10 +1,11 @@
 
 h1 {
-    font: 4.6em "milky_coffeeregular"
+    font: 5.2em "milky_coffeeregular"
+
 }
 
 img {
-    transition: transform 2s;
+    transition: transform 1.7s;
     transform-origin: center;
 }
 
