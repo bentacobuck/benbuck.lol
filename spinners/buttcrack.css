@@ -1,0 +1,9 @@
+
+img {
+    transition: transform 2s;
+}
+
+.spinner:hover {
+    transform: rotate(360deg);
+
+}
