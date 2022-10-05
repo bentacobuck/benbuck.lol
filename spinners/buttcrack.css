@@ -1,9 +1,54 @@
 
-img {
-    transition: transform 2s;
+h1 {
+    font: 4.6em "milky_coffeeregular"
 }
 
-.spinner:hover {
-    transform: rotate(360deg);
+img {
+    transition: transform 2s;
+    transform-origin: center;
+}
 
+img:hover {
+    transform: rotate(360deg);
+}
+
+html {
+  background-color: cyan;
+}
+
+button {
+   margin-top: 40px;
+    display: list-item;
+    height: 60px;
+    font: 35px "milky_coffeeregular"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@font-face {
+    font-family: "milky_coffeeregular";
+    src: url("webfontkit-20221005-145252/milky_coffee.woff2") format("woff2"),
+    url("webfontkit-20221005-145252/milky_coffee.woff")
+    format("woff");
 }
