@@ -14,7 +14,7 @@ function addSpinPoints () {
 function upgrade () {
     if (spinPoints2 > cost) {
         spinPoints2 -= cost;
-        spc += 1;
+        spc += 2;
         cost += 100;
         var msg2 = `upgrade spinner $ ${cost}`;
         up.innerHTML = msg2;
