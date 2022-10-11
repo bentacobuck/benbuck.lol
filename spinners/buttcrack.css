@@ -50,6 +50,12 @@ h2 {
     filter: opacity(0.4) drop-shadow(0 0 0 indianred);
 }
 
+.spinner9 {
+    transition: transform 220ms;
+    transform-origin: center;
+    filter: opacity(0.4) drop-shadow(0 0 0 lightseagreen);
+}
+
 .spinner {
     transition: transform 1.7s;
     transform-origin: center;

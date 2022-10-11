@@ -58,6 +58,11 @@ function upgrade () {
         spc = spc * 10
     }
 
+    if (level === 200) {
+        spinner.classList.replace("spinner8","spinner9");
+        spc = spc * 50
+    }
+
 }
 
  spinner.addEventListener("mouseover", addSpinPoints)
