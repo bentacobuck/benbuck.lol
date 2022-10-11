@@ -51,9 +51,21 @@ h2 {
 }
 
 .spinner9 {
-    transition: transform 220ms;
+    transition: transform 200ms;
     transform-origin: center;
     filter: opacity(0.4) drop-shadow(0 0 0 lightseagreen);
+}
+
+.spinner10 {
+    transition: transform 100ms;
+    transform-origin: center;
+    filter: opacity(0.4) drop-shadow(0 0 0 navy);
+}
+
+.spinner11 {
+    transition: transform 50ms;
+    transform-origin: center;
+    filter: opacity(0.4) drop-shadow(0 0 0 gold);
 }
 
 .spinner {

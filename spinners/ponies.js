@@ -2,11 +2,14 @@ var spinner = document.querySelector(".spinner");
 var spinPoints = document.querySelector("#spinPoints");
 var up = document.querySelector("#up");
 var level2 = document.querySelector("#levels");
+var ascend = document.querySelector("#ascend");
+var rainbow = document.querySelector("#rainbow");
 
 var spinPoints2 = 0;
 var spc = 1;
 var cost = 100;
 var level = 1;
+var rainbowSpinners = 0;
 
 function addSpinPoints () {
     spinPoints2 += spc;
@@ -63,7 +66,31 @@ function upgrade () {
         spc = spc * 50
     }
 
+    if (level === 500) {
+        spinner.classList.replace("spinner9","spinner10");
+        spc = spc * 75
+    }
+
+    if (level === 1000) {
+        spinner.classList.replace("spinner10","spinner11");
+        spc = spc * 100
+    }
+
 }
+
+function evolve () {
+    if (level > 1000) {
+        level -= 1000;
+        spc = 0;
+        cost -= cost;
+        rainbowSpinners += spinPoints2 / 1000000;
+        spinPoints2 = 0;
+
+        var msg4 = `rainbow spinners: ${rainbowSpinners}`
+        up.innerHTML = msg2;
+
+    }
 
  spinner.addEventListener("mouseover", addSpinPoints)
 up.addEventListener("click", upgrade)
+ascend.addEventListener("click", evolve)
