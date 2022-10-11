@@ -3,6 +3,10 @@ h1 {
     font: 5.2em "milky_coffeeregular"
 
 }
+h2 {
+    font: 2.2em "milky_coffeeregular"
+
+}
 
 .spinner2 {
     transition: transform 1.2s;
@@ -20,6 +24,30 @@ h1 {
     transition: transform 0.5s;
     transform-origin: center;
     filter: opacity(0.4) drop-shadow(0 0 0 navajowhite);
+}
+
+.spinner5 {
+    transition: transform 400ms;
+    transform-origin: center;
+    filter: opacity(0.4) drop-shadow(0 0 0 yellowgreen);
+}
+
+.spinner6 {
+    transition: transform 350ms;
+    transform-origin: center;
+    filter: opacity(0.4) drop-shadow(0 0 0 goldenrod);
+}
+
+.spinner7 {
+    transition: transform 325ms;
+    transform-origin: center;
+    filter: opacity(0.4) drop-shadow(0 0 0 darkviolet);
+}
+
+.spinner8 {
+    transition: transform 250ms;
+    transform-origin: center;
+    filter: opacity(0.4) drop-shadow(0 0 0 indianred);
 }
 
 .spinner {

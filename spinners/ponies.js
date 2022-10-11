@@ -1,6 +1,7 @@
 var spinner = document.querySelector(".spinner");
 var spinPoints = document.querySelector("#spinPoints");
 var up = document.querySelector("#up");
+var level2 = document.querySelector("#levels");
 
 var spinPoints2 = 0;
 var spc = 1;
@@ -11,6 +12,8 @@ function addSpinPoints () {
     spinPoints2 += spc;
     var msg = `$ ${spinPoints2}`;
     spinPoints.innerHTML = msg;
+    var msg3 = `level ${level}`
+    level2.innerHTML = msg3;
 }
 
 function upgrade () {
@@ -18,8 +21,10 @@ function upgrade () {
         spinPoints2 -= cost;
         spc += 2;
         cost += 100;
-        var msg2 = `upgrade spinner $ ${cost}`;
+       var msg2 = `upgrade spinner $ ${cost}`
+        var msg3 = `level ${level}`
         up.innerHTML = msg2;
+        level2.innerHTML = msg3;
         level += 1;
     }
 
@@ -36,6 +41,21 @@ function upgrade () {
     if (level === 10) {
         spinner.classList.replace("spinner3","spinner4");
         spc = spc * 5
+    }
+
+    if (level === 20) {
+        spinner.classList.replace("spinner4","spinner5");
+        spc = spc * 6
+    }
+
+    if (level === 50) {
+        spinner.classList.replace("spinner5","spinner6");
+        spc = spc * 7
+    }
+
+    if (level === 100) {
+        spinner.classList.replace("spinner7","spinner8");
+        spc = spc * 10
     }
 
 }
