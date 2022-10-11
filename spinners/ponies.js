@@ -84,7 +84,7 @@ function evolve () {
         spc = 0;
         cost -= cost;
         rainbowSpinners += spinPoints2 / 1000000;
-        spinPoints2 = 0;
+        spinPoints2 -= spinPoints2;
 
         var msg4 = `rainbow spinners: ${rainbowSpinners}`
         up.innerHTML = msg2;
