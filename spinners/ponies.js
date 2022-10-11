@@ -1,6 +1,7 @@
-document.getElementById("spinner")
-document.getElementById("spinPoints")
-document.getElementById("up")
+var spinner = document.querySelector(".spinner");
+var spinPoints = document.querySelector("#spinPoints");
+var up = document.querySelector("#up");
+
 var spinPoints2 = 0;
 var spc = 1;
 var cost = 100;
@@ -18,6 +19,7 @@ function upgrade () {
         cost += 100;
         var msg2 = `upgrade spinner $ ${cost}`;
         up.innerHTML = msg2;
+        spinner.classList.replace("spinner","spinner2");
     }
 }
 
