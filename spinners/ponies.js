@@ -87,10 +87,10 @@ function evolve () {
         spinPoints2 -= spinPoints2;
 
         var msg4 = `rainbow spinners: ${rainbowSpinners}`
-        up.innerHTML = msg2;
+        rainbow.innerHTML = msg4;
 
     }
-
+}
  spinner.addEventListener("mouseover", addSpinPoints)
 up.addEventListener("click", upgrade)
-ascend.addEventListener("click", evolve)
+ ascend.addEventListener("click", evolve)
