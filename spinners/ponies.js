@@ -79,12 +79,12 @@ function upgrade () {
 }
 
 function evolve () {
-    if (level > 1000) {
-        level -= 1000;
-        spc = 0;
-        cost -= cost;
+    if (level > 999) {
+        level = 1;
+        spc = 1 + rainbowSpinners / 100;
+        cost = 100 + rainbowSpinners / 50;
         rainbowSpinners += spinPoints2 / 1000000;
-        spinPoints2 -= spinPoints2;
+        spinPoints2 = 0;
 
         var msg4 = `rainbow spinners: ${rainbowSpinners}`
         rainbow.innerHTML = msg4;
