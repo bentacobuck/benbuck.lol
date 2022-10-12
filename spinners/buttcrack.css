@@ -74,6 +74,13 @@ h3 {
     filter: opacity(0.4) drop-shadow(0 0 0 gold);
 }
 
+.spinner11 {
+    transition: transform 25ms;
+    transform-origin: center;
+    filter: opacity(0.4) drop-shadow(0 0 0 deepskyblue);
+}
+
+
 .spinner {
     transition: transform 1.7s;
     transform-origin: center;

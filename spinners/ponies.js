@@ -76,6 +76,10 @@ function upgrade () {
         spc = spc * 100
     }
 
+    if (level === 10000) {
+        spinner.classList.replace("spinner11","spinner12");
+        spc = spc * 1000
+    }
 }
 
 function evolve () {
@@ -83,7 +87,7 @@ function evolve () {
         level = 1;
         spc = 1 + rainbowSpinners / 100;
         cost = 100 + rainbowSpinners / 50;
-        rainbowSpinners += spinPoints2 / 1000000;
+        rainbowSpinners = Math.round(rainbowSpinners + spinPoints2 / 1000000);
         spinPoints2 = 0;
 
         var msg4 = `rainbow spinners: ${rainbowSpinners}`
@@ -92,5 +96,6 @@ function evolve () {
     }
 }
  spinner.addEventListener("mouseover", addSpinPoints)
+spinner.addEventListener("click", addSpinPoints)
 up.addEventListener("click", upgrade)
  ascend.addEventListener("click", evolve)
