@@ -74,10 +74,16 @@ h3 {
     filter: opacity(0.4) drop-shadow(0 0 0 gold);
 }
 
-.spinner11 {
+.spinner12 {
     transition: transform 25ms;
     transform-origin: center;
     filter: opacity(0.4) drop-shadow(0 0 0 deepskyblue);
+}
+
+.spinner13 {
+    transition: transform 10ms;
+    transform-origin: center;
+    filter: opacity(0.4) drop-shadow(0 0 0 rebeccapurple);
 }
 
 

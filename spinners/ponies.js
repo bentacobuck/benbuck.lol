@@ -80,6 +80,11 @@ function upgrade () {
         spinner.classList.replace("spinner11","spinner12");
         spc = spc * 1000
     }
+
+    if (level === 1000000) {
+        spinner.classList.replace("spinner12","spinner13");
+        spc = spc * 10000
+    }
 }
 
 function evolve () {
