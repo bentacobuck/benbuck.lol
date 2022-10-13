@@ -90,9 +90,9 @@ function upgrade () {
 function evolve () {
     if (level > 999) {
         level = 1;
-        spc = 1 + rainbowSpinners / 100;
+        spc += 1 + rainbowSpinners / 100;
         cost = 100 + rainbowSpinners / 50;
-        rainbowSpinners = Math.round(rainbowSpinners + spinPoints2 / 1000000);
+        rainbowSpinners += Math.round(rainbowSpinners + spinPoints2 / 1000000);
         spinPoints2 = 0;
 
         var msg4 = `rainbow spinners: ${rainbowSpinners}`
