@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <title>Canvas experiment</title>
+    <h1 id="points2">0 points</h1>
+</head>
+<body onload="draw();">
+<canvas id="canvas"></canvas>
+<style>
+
+    h1 {
+        font: 4.2em "milky_coffeeregular"
+
+    }
+
+
+    @font-face {
+        font-family: "milky_coffeeregular";
+        src: url("webfontkit-20221005-145252/milky_coffee.woff2") format("woff2"),
+        url("webfontkit-20221005-145252/milky_coffee.woff")
+        format("woff");
+    }
+</style>
+<script type="application/javascript">
+    var lastX = 25;
+    var lastY = 0;
+    var points = 0;
+    const winHeight = window.innerHeight - 200;
+    const winWidth = window.innerWidth - 20;
+    const canvas = document.getElementById("canvas");
+    const points2 = document.getElementById("points2");
+    const canvasRect = canvas.getBoundingClientRect();
+    canvas.width = winWidth;
+    canvas.height = winHeight;
+    canvas.addEventListener("click", click);
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+    }
+
+    function pop () {
+        points += 1;
+        lastX = getRandomInt(winWidth)
+        lastY = getRandomInt(winHeight);
+        var msg = `${points} points`
+        points2.innerHTML = msg;
+    }
+    function draw() {
+        const canvas = document.getElementById("canvas");
+        if (canvas.getContext) {
+            const ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, winWidth, winHeight); // clear canvas
+
+
+            ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+            ctx.beginPath();
+            lastX += 1;
+            lastY += 1;
+            if (lastX > winWidth){
+                lastX = 0;
+            }
+            if (lastY > winHeight){
+                lastY = 0;
+            }
+
+            ctx.arc(lastX, lastY, 50, 0, 2 * Math.PI);
+            ctx.stroke();
+        }
+    }
+    function click(e){
+        var clickedX = e.pageX - canvasRect.x;
+        var clickedY = e.pageY - canvasRect.y;
+        var circleStartX = lastX - 50;
+        var circleEndX = lastX + 50;
+        var circleStartY = lastY - 50;
+        var circleEndY = lastY + 50;
+        var betweenXs = clickedX > circleStartX && clickedX < circleEndX;
+        var betweenYs = clickedY > circleStartY && clickedY < circleEndY;
+        if (betweenXs && betweenYs){
+            console.log("clicked circle");
+            pop();
+        }
+    }
+    setInterval(draw, 15);
+
+</script>
+</body>
+</html>
