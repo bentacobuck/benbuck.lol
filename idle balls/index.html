@@ -52,7 +52,7 @@
             ctx.clearRect(0, 0, winWidth, winHeight); // clear canvas
 
 
-            ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+            ctx.fillStyle = ctx.fillStyle = "rgba(189, 195, 199)";
             ctx.beginPath();
             lastX += 1;
             lastY += 1;
@@ -65,6 +65,22 @@
 
             ctx.arc(lastX, lastY, 50, 0, 2 * Math.PI);
             ctx.stroke();
+
+            if (points > 100) {
+                ctx.fillStyle = "rgba(189, 195, 199)";
+                ctx.beginPath();
+                lastX += 1;
+                lastY += 1;
+                if (lastX > winWidth){
+                    lastX = 0;
+                }
+                if (lastY > winHeight){
+                    lastY = 0;
+                }
+
+                ctx.arc(lastX, lastY, 50, 0, 2 * Math.PI);
+                ctx.stroke();
+            }
         }
     }
     function click(e){
