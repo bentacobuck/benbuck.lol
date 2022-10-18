@@ -26,8 +26,8 @@
     }
 </style>
 <script type="application/javascript">
-    var lastX = 25;
-    var lastY = 0;
+    var lastCircleId = 1;
+    var circles = [{lastX: 25, lastY: 0, id: 1, size: 50}];
     var points = 0;
     var poppoints = 1;
     const winHeight = window.innerHeight - 200;
@@ -40,16 +40,27 @@
     canvas.width = winWidth;
     canvas.height = winHeight;
     canvas.addEventListener("click", click);
-    wht.addEventListener("click", click);
-    yel.addEventListener("click", click);
+    // wht.addEventListener("click", clickwht);
+    // yel.addEventListener("click", clickyel);
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
 
-    function pop () {
+    // addCircle() // add a circle radius 50 and starting at 0,0
+    // addCircle(25, 40, 60) // add a circle radius 25 and starting at 40, 60
+    function addCircle(size = 50, startingX = 0, startingY = 0){
+        lastCircleId++;
+        circles.push({
+            id: lastCircleId,
+            lastX: startingX,
+            lastY: startingY,
+            size: size
+        });
+    }
+    function pop (circle) {
         points += poppoints;
-        lastX = getRandomInt(winWidth)
-        lastY = getRandomInt(winHeight);
+        circle["lastX"] = getRandomInt(winWidth)
+        circle["lastY"] = getRandomInt(winHeight);
         var msg = `${points} points`
         points2.innerHTML = msg;
     }
@@ -59,36 +70,43 @@
             const ctx = canvas.getContext("2d");
             ctx.clearRect(0, 0, winWidth, winHeight); // clear canvas
 
+            for (var i = 0; i < circles.length; i++){
+                let circle = circles[i];
+                drawCircle(ctx, circle);
+            }
+        }
 
-
+        function drawCircle(ctx, circle){
+            ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
             ctx.beginPath();
-            lastX += 1;
-            lastY += 1;
-            if (lastX > winWidth){
-                lastX = 0;
+            circle["lastX"] += 1;
+            circle["lastY"] += 1;
+            if (circle["lastX"] > winWidth){
+                circle["lastX"] = 0;
             }
-            if (lastY > winHeight){
-                lastY = 0;
+            if (circle["lastY"] > winHeight){
+                circle["lastY"]  = 0;
             }
 
-            ctx.arc(lastX, lastY, 50, 0, 2 * Math.PI);
+            ctx.arc(circle["lastX"], circle["lastY"], circle["size"], 0, 2 * Math.PI);
             ctx.stroke();
-
-
         }
     }
     function click(e){
         var clickedX = e.pageX - canvasRect.x;
         var clickedY = e.pageY - canvasRect.y;
-        var circleStartX = lastX - 50;
-        var circleEndX = lastX + 50;
-        var circleStartY = lastY - 50;
-        var circleEndY = lastY + 50;
-        var betweenXs = clickedX > circleStartX && clickedX < circleEndX;
-        var betweenYs = clickedY > circleStartY && clickedY < circleEndY;
-        if (betweenXs && betweenYs){
-            console.log("clicked circle");
-            pop();
+
+        for (var i = 0; i < circles.length; i++){
+            let circle = circles[i];
+            var circleStartX = circle["lastX"] - circle["size"];
+            var circleEndX = circle["lastX"] + circle["size"];
+            var circleStartY = circle["lastY"] - circle["size"];
+            var circleEndY = circle["lastY"] + circle["size"];
+            var betweenXs = clickedX > circleStartX && clickedX < circleEndX;
+            var betweenYs = clickedY > circleStartY && clickedY < circleEndY;
+            if (betweenXs && betweenYs){
+                pop(circle);
+            }
         }
     }
 
