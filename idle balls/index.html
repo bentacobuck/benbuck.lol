@@ -6,6 +6,9 @@
     <h1 id="points2">0 points</h1>
 </head>
 <body onload="draw();">
+<button id="wht">add white ball: 10 pts</button>
+<button id="yel">add yellow ball: 75 pts</button>
+
 <canvas id="canvas"></canvas>
 <style>
 
@@ -26,20 +29,25 @@
     var lastX = 25;
     var lastY = 0;
     var points = 0;
+    var poppoints = 1;
     const winHeight = window.innerHeight - 200;
     const winWidth = window.innerWidth - 20;
     const canvas = document.getElementById("canvas");
     const points2 = document.getElementById("points2");
+    const wht = document.getElementById("wht");
+    const yel = document.getElementById("yel");
     const canvasRect = canvas.getBoundingClientRect();
     canvas.width = winWidth;
     canvas.height = winHeight;
     canvas.addEventListener("click", click);
+    wht.addEventListener("click", click);
+    yel.addEventListener("click", click);
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
 
     function pop () {
-        points += 1;
+        points += poppoints;
         lastX = getRandomInt(winWidth)
         lastY = getRandomInt(winHeight);
         var msg = `${points} points`
@@ -52,7 +60,7 @@
             ctx.clearRect(0, 0, winWidth, winHeight); // clear canvas
 
 
-            ctx.fillStyle = ctx.fillStyle = "rgba(189, 195, 199)";
+
             ctx.beginPath();
             lastX += 1;
             lastY += 1;
@@ -66,21 +74,7 @@
             ctx.arc(lastX, lastY, 50, 0, 2 * Math.PI);
             ctx.stroke();
 
-            if (points > 100) {
-                ctx.fillStyle = "rgba(189, 195, 199)";
-                ctx.beginPath();
-                lastX += 1;
-                lastY += 1;
-                if (lastX > winWidth){
-                    lastX = 0;
-                }
-                if (lastY > winHeight){
-                    lastY = 0;
-                }
 
-                ctx.arc(lastX, lastY, 50, 0, 2 * Math.PI);
-                ctx.stroke();
-            }
         }
     }
     function click(e){
@@ -97,7 +91,11 @@
             pop();
         }
     }
+
+
     setInterval(draw, 15);
+
+
 
 </script>
 </body>
