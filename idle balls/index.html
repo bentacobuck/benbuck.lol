@@ -27,8 +27,9 @@
 </style>
 <script type="application/javascript">
     var lastCircleId = 1;
-    var circles = [{lastX: 25, lastY: 0, id: 1, size: 50}];
-    var points = 0;
+    var circles = [{lastX: 25, lastY: 0, id: 1, size: 50, color: "white"}];
+    var points = 100;
+
 
     const winHeight = window.innerHeight - 200;
     const winWidth = window.innerWidth - 20;
@@ -36,33 +37,48 @@
     const points2 = document.getElementById("points2");
     const wht = document.getElementById("wht");
     const yel = document.getElementById("yel");
-    const canvasRect = canvas.getBoundingClientRect();
+
     canvas.width = winWidth;
     canvas.height = winHeight;
+
+    const canvasRect = canvas.getBoundingClientRect();
+
     canvas.addEventListener("click", click);
-    // wht.addEventListener("click", clickwht);
-    // yel.addEventListener("click", clickyel);
+    wht.addEventListener("click", clickwht);
+   yel.addEventListener("click", clickyel);
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
 
-    // addCircle() // add a circle radius 50 and starting at 0,0
-    // addCircle(25, 40, 60) // add a circle radius 25 and starting at 40, 60
-    function addCircle(size = 50, startingX = 0, startingY = 0){
+
+    function addCircle(size = 50, startingX = 0, startingY = 0, color = "white"){
         lastCircleId++;
         circles.push({
             id: lastCircleId,
             lastX: startingX,
             lastY: startingY,
-            size: size
+            size: size,
+            color: color
         });
     }
     function pop (circle) {
-        points += 1;
-        circle["lastX"] = getRandomInt(winWidth)
-        circle["lastY"] = getRandomInt(winHeight);
-        var msg = `${points} points`
-        points2.innerHTML = msg;
+        if (circle["color"] === "yellow") {
+            points += 10;
+            circle["lastX"] = getRandomInt(winWidth)
+            circle["lastY"] = getRandomInt(winHeight);
+            var msg = `${points} points`
+            points2.innerHTML = msg;
+        }
+
+        else {
+            points += 1;
+            circle["lastX"] = getRandomInt(winWidth)
+            circle["lastY"] = getRandomInt(winHeight);
+            var msg = `${points} points`
+            points2.innerHTML = msg;
+
+        }
+
     }
     function draw() {
         const canvas = document.getElementById("canvas");
@@ -73,11 +89,12 @@
             for (var i = 0; i < circles.length; i++){
                 let circle = circles[i];
                 drawCircle(ctx, circle);
+
             }
         }
 
         function drawCircle(ctx, circle){
-            ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+            ctx.fillStyle = circle["color"];
             ctx.beginPath();
             circle["lastX"] += 1;
             circle["lastY"] += 1;
@@ -90,12 +107,12 @@
 
             ctx.arc(circle["lastX"], circle["lastY"], circle["size"], 0, 2 * Math.PI);
             ctx.stroke();
+            ctx.fill();
         }
     }
     function click(e){
         var clickedX = e.pageX - canvasRect.x;
         var clickedY = e.pageY - canvasRect.y;
-
         for (var i = 0; i < circles.length; i++){
             let circle = circles[i];
             var circleStartX = circle["lastX"] - circle["size"];
@@ -110,6 +127,27 @@
         }
     }
 
+    function clickwht () {
+        if (points > 9) {
+            addCircle(50, 0, 0, "white")
+
+            points -= 10;
+            var msg = `${points} points`
+            points2.innerHTML = msg;
+        }
+    }
+
+    function clickyel () {
+        if (points > 74) {
+            addCircle(50, 0, 0, "yellow")
+            points -= 75;
+            var msg = `${points} points`
+            points2.innerHTML = msg;
+
+            setInterval(draw, 12);
+        }
+
+    }
 
     setInterval(draw, 15);
 
