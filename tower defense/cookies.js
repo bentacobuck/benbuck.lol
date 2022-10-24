@@ -78,7 +78,7 @@ class Projectile {
         this.x++;
     }
     draw(){
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = 'green';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.width, 0, Math.PI * 2);
         ctx.fill();
@@ -91,6 +91,7 @@ function handleProjectiles(){
         for (let y = 0; y < enemies.length; y++){
             if (enemies[y] && projectiles[i] && collision(projectiles[i], enemies[y])){
                 enemies[y].health -= projectiles[i].power;
+
                 projectiles.splice(i, 1);
                 i--;
 
@@ -119,11 +120,9 @@ class Defender {
         this.health = 100;
     }
     draw(){
-        ctx.fillStyle = 'blue';
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-        ctx.fillStyle = 'white';
-        ctx.font = '30px milky_coffeeregular';
-        ctx.fillText(this.health, this.x + 5, this.y + 30);
+        const pea = new Image()
+        pea.src = "peashooter.JPG";
+        ctx.drawImage(pea, this.x, this.y);
     }
     update(){
         if (this.shooting){
@@ -190,15 +189,31 @@ class Enemy {
         this.x -= this.movement;
     }
 
-
-
-    draw(){
+    drawEnemy() {
         const image = new Image()
         image.src = "blue.JPG";
         ctx.drawImage(image, this.x, this.y);
 
     }
 
+
+
+
+}
+
+
+function drawEnemy() {
+    const blue = new Image()
+    blue.src = "blue.JPG";
+    ctx.drawImage(blue, this.x, this.y);
+
+}
+
+function drawEnemyRed() {
+
+   const red = new Image()
+    red.src = "red.JPG";
+    ctx.drawImage(red, this.x, this.y);
 
 }
 
@@ -208,14 +223,29 @@ let verticalPosition = Math.floor(Math.random() * 5 + 1) * cellSize + cellGap;
 function handleEnemies(){
     for (let i = 0; i < enemies.length; i++){
         enemies[i].update();
-        enemies[i].draw();
+        enemies[i].drawEnemy();
         if (enemies[i] && enemies[i].health <= 0){
             const findThisIndex = enemyPositions.indexOf(enemies[i].y);
-            enemyPositions.splice(findThisIndex,1);
+            enemyPositions.splice(findThisIndex, 1);
             enemies.splice(i, 1);
             numberOfResources += 10;
+
+
             i--
             score++;
+        }
+
+        if (enemies[i] && enemies[i].health <= 95){
+            const red = new Image()
+            red.src = "red.JPG";
+          const findThisIndex = enemyPositions.indexOf(enemies[i].y);
+            const findThisIndex2 = enemyPositions.indexOf(enemies[i].x);
+
+            ctx.drawImage(red, enemies[i].x, enemies[i].y);
+
+
+
+
         }
         if (enemies[i] && enemies[i].x < 0){
             gameOver = true;
@@ -250,11 +280,9 @@ class Resource {
         }
     }
     draw(){
-        ctx.fillStyle = 'yellow';
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-        ctx.fillStyle = 'black';
-        ctx.font = '30px milky_coffeeregular';
-        ctx.fillText(this.amount, this.x + 5, this.y + 30);
+        const bone = new Image()
+        bone.src = "bonemeal.JPG";
+        ctx.drawImage(bone, this.x, this.y);
     }
 }
 function handleResources(){
@@ -300,9 +328,9 @@ animate();
 
 function handleGameStatus(){
     ctx.fillStyle = 'white';
-    ctx.font = '30px Helvetica';
+    ctx.font = '30px milky_coffeeregular';
     ctx.fillText('Score: ' + score, 10, 35);
-    ctx.fillText('Available resources: ' + numberOfResources, 10, 85);
+    ctx.fillText('Bonemeal: ' + numberOfResources, 10, 85);
     if (gameOver){
         ctx.fillStyle = 'black';
         ctx.font = '110px Helvetica';
