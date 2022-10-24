@@ -93,6 +93,7 @@ function handleProjectiles(){
                 enemies[y].health -= projectiles[i].power;
                 projectiles.splice(i, 1);
                 i--;
+
             }
         };
         if (projectiles[i] && projectiles[i].x > canvas.width - cellSize){
@@ -197,7 +198,10 @@ class Enemy {
         ctx.drawImage(image, this.x, this.y);
 
     }
+
+
 }
+
 
 
 let verticalPosition = Math.floor(Math.random() * 5 + 1) * cellSize + cellGap;
