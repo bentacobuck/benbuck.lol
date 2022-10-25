@@ -78,10 +78,9 @@ class Projectile {
         this.x++;
     }
     draw(){
-        ctx.fillStyle = 'green';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.width, 0, Math.PI * 2);
-        ctx.fill();
+        const ramenball = new Image()
+        ramenball.src = "ramenball.JPG";
+        ctx.drawImage(ramenball, this.x, this.y);
     }
 }
 function handleProjectiles(){
@@ -120,9 +119,9 @@ class Defender {
         this.health = 100;
     }
     draw(){
-        const pea = new Image()
-        pea.src = "peashooter.JPG";
-        ctx.drawImage(pea, this.x, this.y);
+        const ramen = new Image()
+        ramen.src = "ramenboi.JPG";
+        ctx.drawImage(ramen, this.x, this.y);
     }
     update(){
         if (this.shooting){
@@ -330,7 +329,7 @@ function handleGameStatus(){
     ctx.fillStyle = 'white';
     ctx.font = '30px milky_coffeeregular';
     ctx.fillText('Score: ' + score, 10, 35);
-    ctx.fillText('Bonemeal: ' + numberOfResources, 10, 85);
+    ctx.fillText('Flour: ' + numberOfResources, 10, 85);
     if (gameOver){
         ctx.fillStyle = 'black';
         ctx.font = '110px Helvetica';
