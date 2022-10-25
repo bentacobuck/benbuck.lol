@@ -1,3 +1,5 @@
+
+
 const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
 canvas.width = 900;
@@ -122,7 +124,28 @@ class Defender {
         const ramen = new Image()
         ramen.src = "ramenboi.JPG";
         ctx.drawImage(ramen, this.x, this.y);
+
+
+
     }
+
+    function upgrade(){
+        for (let i = 0; i < defenders.length; i++){
+            const red = new Image()
+            red.src = "red.JPG";
+            const findThisIndex = enemyPositions.indexOf(defenders[i].y);
+            const findThisIndex2 = enemyPositions.indexOf(defenders[i].x);
+
+            ctx.drawImage(red, defenders[i].x, defenders[i].y);
+        }
+
+
+    }
+
+    ramen.addEventListener("click", upgrade());
+
+
+
     update(){
         if (this.shooting){
             this.timer++;
