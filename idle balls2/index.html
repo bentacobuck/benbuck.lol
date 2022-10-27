@@ -27,7 +27,7 @@
 </style>
 <script type="application/javascript">
     var lastCircleId = 1;
-    var circles = [{lastX: 25, lastY: 0, id: 1, size: 50, color: "white"}];
+    var circles = [{lastX: 25, lastY: 0, id: 1, size: 50, color: "white"},{lastX: 75, lastY: 0, id: 1, size: 50, color: "white"},{lastX: 125, lastY: 0, id: 1, size: 50, color: "white"}];
     var points = 0;
 var speed = 15;
 
@@ -121,16 +121,19 @@ var speed = 15;
         }
 
         if (changeColor === 6) {
-            circles.findIndex(index)
-            circle["color"] = "magenta";
-            speed = 4;
-            // circle["lastX"] = getRandomInt(winWidth)
-            //  circle["lastY"] = getRandomInt(winHeight);
-            var msg = `${points} points`
-            points2.innerHTML = msg;
+            circle["color"] = "navajowhite";
+           // var circleNum = circles.indexOf(circle);
+            console.log();
+            for (var i = 0; i < circles.length; i++) {
+                let circle = circles[i];
+            }
+
 
         }
 
+        // need index
+        // where do I get the index
+        // what does i mean in that loop
 
 
 
