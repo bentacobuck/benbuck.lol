@@ -78,9 +78,10 @@ class Projectile {
         this.x++;
     }
     draw(){
-        const ramenball = new Image()
-        ramenball.src = "ramenball.JPG";
-        ctx.drawImage(ramenball, this.x, this.y);
+        ctx.fillStyle = 'green';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.width, 0, Math.PI * 2);
+        ctx.fill();
     }
 }
 function handleProjectiles(){
@@ -123,6 +124,15 @@ class Defender {
         ramen.src = "peashooter.JPG";
         ctx.drawImage(ramen, this.x, this.y);
     }
+    draw2(){
+        const ice = new Image()
+        ice.src = "icepea.JPG";
+        ctx.drawImage(ice, this.x, this.y);
+    }
+
+
+
+
     update(){
         if (this.shooting){
             this.timer++;
@@ -145,10 +155,27 @@ canvas.addEventListener('click', function(e){
         numberOfResources -= defenderCost;
     }
 
+
+
 })
+
+var dblclick = 0;
+
+function dbl (){
+    dblclick += 1;
+    console.log("double click");
+}
+
+// canvas.addEventListener('dblclick', dbl)
+
+
 function handleDefenders(){
     for (let i = 0; i < defenders.length; i++){
-        defenders[i].draw();
+
+
+            defenders[i].draw();
+            defenders[i].update();
+
         defenders[i].update();
         if (enemyPositions.indexOf(defenders[i].y) !== -1) {
             defenders[i].shooting = true;
