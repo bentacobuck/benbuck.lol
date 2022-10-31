@@ -1,5 +1,3 @@
-
-
 const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
 canvas.width = 900;
@@ -122,30 +120,9 @@ class Defender {
     }
     draw(){
         const ramen = new Image()
-        ramen.src = "ramenboi.JPG";
+        ramen.src = "peashooter.JPG";
         ctx.drawImage(ramen, this.x, this.y);
-
-
-
     }
-
-    function upgrade(){
-        for (let i = 0; i < defenders.length; i++){
-            const red = new Image()
-            red.src = "red.JPG";
-            const findThisIndex = enemyPositions.indexOf(defenders[i].y);
-            const findThisIndex2 = enemyPositions.indexOf(defenders[i].x);
-
-            ctx.drawImage(red, defenders[i].x, defenders[i].y);
-        }
-
-
-    }
-
-    ramen.addEventListener("click", upgrade());
-
-
-
     update(){
         if (this.shooting){
             this.timer++;
@@ -351,12 +328,12 @@ animate();
 function handleGameStatus(){
     ctx.fillStyle = 'white';
     ctx.font = '30px milky_coffeeregular';
-    ctx.fillText('Score: ' + score, 10, 35);
-    ctx.fillText('Flour: ' + numberOfResources, 10, 85);
+    ctx.fillText('Gems: ' + score, 10, 35);
+    ctx.fillText('Bonemeal: ' + numberOfResources, 10, 85);
     if (gameOver){
         ctx.fillStyle = 'black';
-        ctx.font = '110px Helvetica';
-        ctx.fillText('GAME OVER', 120, 390);
+        ctx.font = '45px Helvetica';
+        ctx.fillText('THE CREEPERS ATE YOUR BRAINS!!!', 50, 390);
     }
     if (score >= winningScore && enemies.length == 0){
         ctx.fillStyle = 'black';
