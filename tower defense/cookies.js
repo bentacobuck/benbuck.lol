@@ -108,7 +108,7 @@ function handleProjectiles(){
 // Defenders
 
 class Defender {
-    constructor(x, y){
+    constructor(x, y) {
         this.x = x;
         this.y = y;
         this.width = cellSize - cellGap * 2;
@@ -119,6 +119,18 @@ class Defender {
         this.shooting = false;
         this.health = 100;
     }
+}
+
+class icePeashooter extends Defender {
+    honkHorn(){
+        console.log("Beep Beep");
+    }
+}
+
+
+
+
+
     draw(){
         const ramen = new Image()
         ramen.src = "peashooter.JPG";
@@ -144,6 +156,22 @@ class Defender {
     }
 }
 canvas.addEventListener('click', function(e){
+    const gridPositionX = (e.x - canvasPosition.left) - ((e.x - canvasPosition.left)%cellSize) + cellGap;
+    const gridPositionY = (e.y - canvasPosition.top)- ((e.y - canvasPosition.top)%cellSize) + cellGap;
+    if (gridPositionY < cellSize) return;
+    for (let i = 0; i < defenders.length; i++){
+        if (defenders[i].x === gridPositionX && defenders[i].y === gridPositionY) return;
+    }
+    if (numberOfResources >= defenderCost) {
+        defenders.push(new Defender(gridPositionX, gridPositionY));
+        numberOfResources -= defenderCost;
+    }
+
+
+
+})
+
+canvas.addEventListener('dblclick', function(e){
     const gridPositionX = (e.x - canvasPosition.left) - ((e.x - canvasPosition.left)%cellSize) + cellGap;
     const gridPositionY = (e.y - canvasPosition.top)- ((e.y - canvasPosition.top)%cellSize) + cellGap;
     if (gridPositionY < cellSize) return;
