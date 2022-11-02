@@ -242,7 +242,7 @@ canvas.addEventListener('click', function(e){
         numberOfResources -= defenderCost + 50;
     }
 
-
+// poop
 
 });
 
