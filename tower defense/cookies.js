@@ -18,6 +18,8 @@ let numberOfResources = defenderCost * 1.5;
 
 const projectiles = [];
 const defenders = [];
+const icePeashooters = [];
+const iceProjectiles = [];
 const enemies = [];
 const enemyPositions = [];
 const resources = [];
@@ -74,11 +76,31 @@ class Projectile {
         this.speed = 90;
         this.power = 10;
     }
+
+
     update(){
         this.x++;
     }
     draw(){
         ctx.fillStyle = 'green';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.width, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+class iceProjectile extends Projectile {
+    constructor(x, y) {
+       super(x,y);
+
+        this.speed = 85;
+        this.power = 25;
+    }
+    update(){
+        this.x++;
+    }
+    draw(){
+        ctx.fillStyle = 'lightblue';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.width, 0, Math.PI * 2);
         ctx.fill();
@@ -103,12 +125,32 @@ function handleProjectiles(){
         }
     }
 }
+
+function handleIceProjectiles(){
+    for (let i = 0; i < iceProjectiles.length; i++){
+        iceProjectiles[i].update();
+        iceProjectiles[i].draw();
+        for (let y = 0; y < enemies.length; y++){
+            if (enemies[y] &&  iceProjectiles[i] && collision( iceProjectiles[i], enemies[y])){
+                enemies[y].health -=  iceProjectiles[i].power;
+
+                iceProjectiles.splice(i, 1);
+                i--;
+
+            }
+        };
+        if ( iceProjectiles[i] &&  iceProjectiles[i].x > canvas.width - cellSize){
+            iceProjectiles.splice(i, 1);
+            i--;
+        }
+    }
+}
 /*********************************************************************************/
 
 // Defenders
 
 class Defender {
-    constructor(x, y) {
+    constructor(x, y){
         this.x = x;
         this.y = y;
         this.width = cellSize - cellGap * 2;
@@ -119,15 +161,6 @@ class Defender {
         this.shooting = false;
         this.health = 100;
     }
-}
-
-class icePeashooter extends Defender {
-    honkHorn(){
-        console.log("Beep Beep");
-    }
-}
-
-
 
 
 
@@ -136,11 +169,7 @@ class icePeashooter extends Defender {
         ramen.src = "peashooter.JPG";
         ctx.drawImage(ramen, this.x, this.y);
     }
-    draw2(){
-        const ice = new Image()
-        ice.src = "icepea.JPG";
-        ctx.drawImage(ice, this.x, this.y);
-    }
+
 
 
 
@@ -150,6 +179,35 @@ class icePeashooter extends Defender {
             this.timer++;
             if (this.timer % 90 === 0){
                 projectiles.push(new Projectile(this.x + 70, this.y + cellSize / 2));
+            }
+        }
+
+    }
+}
+
+class icePeashooter extends Defender {
+    constructor(x, y){
+        super(x,y);
+        this.health = 200;
+    }
+
+
+
+    draw(){
+        const ice = new Image()
+        ice.src = "icepea.JPG";
+        ctx.drawImage(ice, this.x, this.y);
+    }
+
+
+
+
+
+    update(){
+        if (this.shooting){
+            this.timer++;
+            if (this.timer % 90 === 0){
+                iceProjectiles.push(new iceProjectile(this.x + 70, this.y + cellSize / 2));
             }
         }
 
@@ -171,21 +229,22 @@ canvas.addEventListener('click', function(e){
 
 })
 
-canvas.addEventListener('dblclick', function(e){
+canvas.addEventListener('click', function(e){
+
     const gridPositionX = (e.x - canvasPosition.left) - ((e.x - canvasPosition.left)%cellSize) + cellGap;
     const gridPositionY = (e.y - canvasPosition.top)- ((e.y - canvasPosition.top)%cellSize) + cellGap;
     if (gridPositionY < cellSize) return;
-    for (let i = 0; i < defenders.length; i++){
-        if (defenders[i].x === gridPositionX && defenders[i].y === gridPositionY) return;
+    for (let i = 0; i < icePeashooters.length; i++){
+        if (icePeashooters[i].x === gridPositionX && icePeashooters[i].y === gridPositionY) return;
     }
-    if (numberOfResources >= defenderCost) {
-        defenders.push(new Defender(gridPositionX, gridPositionY));
-        numberOfResources -= defenderCost;
+    if (numberOfResources >= defenderCost + 50) {
+        icePeashooters.push(new icePeashooter(gridPositionX, gridPositionY));
+        numberOfResources -= defenderCost + 50;
     }
 
 
 
-})
+});
 
 var dblclick = 0;
 
@@ -218,6 +277,35 @@ function handleDefenders(){
             }
             if (defenders[i] && defenders[i].health <= 0){
                 defenders.splice(i, 1);
+                i--;
+                enemies[j].movement = enemies[j].speed;
+            }
+        }
+
+    }
+}
+
+function handleIceDefenders(){
+    for (let i = 0; i < icePeashooters.length; i++){
+
+
+        icePeashooters[i].draw();
+        icePeashooters[i].update();
+
+        icePeashooters[i].update();
+        if (enemyPositions.indexOf(icePeashooters[i].y) !== -1) {
+            icePeashooters[i].shooting = true;
+        } else {
+            icePeashooters[i].shooting = false;
+            icePeashooters[i].timer = 0;
+        }
+        for (let j = 0; j < enemies.length; j++){
+            if (icePeashooters[i] && collision(icePeashooters[i], enemies[j])){
+                enemies[j].movement = 0;
+                icePeashooters[i].health--;
+            }
+            if (icePeashooters[i] && icePeashooters[i].health <= 0){
+                icePeashooters.splice(i, 1);
                 i--;
                 enemies[j].movement = enemies[j].speed;
             }
