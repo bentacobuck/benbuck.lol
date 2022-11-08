@@ -168,6 +168,7 @@ class Defender {
         const ramen = new Image()
         ramen.src = "peashooter.JPG";
         ctx.drawImage(ramen, this.x, this.y);
+        console.log("hi");
     }
 
 
