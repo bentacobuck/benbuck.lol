@@ -86,6 +86,11 @@ function upgrade () {
         spinner.classList.replace("spinner12","spinner13");
         spc = spc * 10000
     }
+
+    if (level === 1000000000) {
+        spinner.classList.replace("spinner12","spinner13");
+        spc = spc * 100000000000000
+    }
 }
 
 function upgradeTimesTen () {
@@ -155,16 +160,20 @@ function upgradeTimesTen () {
         spinner.classList.replace("spinner12","spinner13");
         spc = spc * 10000
     }
+
+    if (level === 1000000000) {
+        spinner.classList.replace("spinner12","spinner13");
+        spc = spc * 100000000000000
+    }
 }
 
 function evolve () {
     if (level > 999) {
         level = 1;
-        spc += 1 + rainbowSpinners / 100;
+        spc = 1 + rainbowSpinners / 100;
         cost = 100 + rainbowSpinners / 50;
         rainbowSpinners += Math.round(rainbowSpinners + spinPoints2 / 1000000);
         spinPoints2 = 0;
-
         var msg4 = `rainbow spinners: ${rainbowSpinners}`
         rainbow.innerHTML = msg4;
 
