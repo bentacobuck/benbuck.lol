@@ -64,6 +64,9 @@
     function pop (circle) {
         if (circle["color"] === "yellow") {
             points += 10;
+            if (getRandomInt(75) === 1) {
+                points += 100;
+            }
             circle["lastX"] = getRandomInt(winWidth)
             circle["lastY"] = getRandomInt(winHeight);
             var msg = `${points} points`
@@ -72,6 +75,9 @@
 
         else {
             points += 1;
+            if (getRandomInt(100) === 1) {
+                points += 10;
+            }
             circle["lastX"] = getRandomInt(winWidth)
             circle["lastY"] = getRandomInt(winHeight);
             var msg = `${points} points`
