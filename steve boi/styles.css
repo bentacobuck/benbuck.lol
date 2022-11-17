@@ -84,12 +84,12 @@ header label:hover {
     transition: left 0s .75s;
 }
 
-.slide-one { background-image: url('1'); }
-.slide-two { background-image: url('2'); }
-.slide-three { background-image: url('3'); }
-.slide-four { background-image: url('4'); }
-.slide-five { background-image: url('5'); }
-.slide-six { background-image: url('6'); }
+.slide-one { background-image: url('imgs/1.png'); }
+.slide-two { background-image: url('imgs/2.png'); }
+.slide-three { background-image: url('imgs/3.png'); }
+.slide-four { background-image: url('imgs/4.png'); }
+.slide-five { background-image: url('imgs/5.png'); }
+.slide-six { background-image: url('imgs/6.jpg'); }
 
 
 
