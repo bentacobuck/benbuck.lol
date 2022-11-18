@@ -1,28 +1,24 @@
-const canvas = document.getElementById('canvas1');
-const ctx = canvas.getContext('2d');
-canvas.width = 900;
-canvas.height = 600;
-const cellSize = 100;
-const cellGap = 3;
-const gameGrid = [];
-const selectedDefender = 1;
+const canvas            = document.getElementById('canvas1');
+const cellGap           = 3;
+const cellSize          = 100;
+const ctx               = canvas.getContext('2d');
+const defenders         = [];
+const defenderCost      = 100;
+const enemies           = [];
+const enemyPositions    = [];
+const gameGrid          = [];
+const icePeashooters    = [];
+const iceProjectiles    = [];
+const projectiles       = [];
+const resources         = [];
+const selectedDefender  = 1;
+const winningScore      = 20;
+
 let gameOver = false;
 let frame = 0;
 let score = 0;
-const winningScore = 20;
-
 let enemiesInterval = 1000;
-const defenderCost = 100;
 let numberOfResources = defenderCost * 1.5;
-
-
-const projectiles = [];
-const defenders = [];
-const icePeashooters = [];
-const iceProjectiles = [];
-const enemies = [];
-const enemyPositions = [];
-const resources = [];
 
 const mouse = {
     x: undefined,
@@ -30,6 +26,11 @@ const mouse = {
     width: 0.00001,
     height: 0.00001,
 }
+
+canvas.width = 900;
+canvas.height = 600;
+
+
 let canvasPosition = canvas.getBoundingClientRect();
 canvas.addEventListener('mousemove', function(e){
     mouse.x = e.x - canvasPosition.left;
@@ -100,7 +101,7 @@ class iceProjectile extends Projectile {
         this.x++;
     }
     draw(){
-        ctx.fillStyle = 'lightblue';
+        ctx.fillStyle = 'blue';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.width, 0, Math.PI * 2);
         ctx.fill();
@@ -160,17 +161,21 @@ class Defender {
         this.timer = 0;
         this.shooting = false;
         this.health = 100;
+
+
     }
-
-
 
     draw(){
         const ramen = new Image()
         ramen.src = "peashooter.JPG";
         ctx.drawImage(ramen, this.x, this.y);
-        console.log("hi");
-        console.log("hi");
+
+
     }
+
+
+
+
 
 
 
@@ -191,15 +196,19 @@ class icePeashooter extends Defender {
     constructor(x, y){
         super(x,y);
         this.health = 200;
+
+
     }
-
-
 
     draw(){
         const ice = new Image()
         ice.src = "icepea.JPG";
         ctx.drawImage(ice, this.x, this.y);
     }
+
+
+
+
 
 
 
@@ -216,35 +225,38 @@ class icePeashooter extends Defender {
     }
 }
 canvas.addEventListener('click', function(e){
-    const gridPositionX = (e.x - canvasPosition.left) - ((e.x - canvasPosition.left)%cellSize) + cellGap;
-    const gridPositionY = (e.y - canvasPosition.top)- ((e.y - canvasPosition.top)%cellSize) + cellGap;
-    if (gridPositionY < cellSize) return;
-    for (let i = 0; i < defenders.length; i++){
-        if (defenders[i].x === gridPositionX && defenders[i].y === gridPositionY) return;
+    if (e.shiftKey === false) {
+        const gridPositionX = (e.x - canvasPosition.left) - ((e.x - canvasPosition.left) % cellSize) + cellGap;
+        const gridPositionY = (e.y - canvasPosition.top) - ((e.y - canvasPosition.top) % cellSize) + cellGap;
+        if (gridPositionY < cellSize) return;
+        for (let i = 0; i < defenders.length; i++) {
+            if (defenders[i].x === gridPositionX && defenders[i].y === gridPositionY) return;
+        }
+        if (numberOfResources >= defenderCost) {
+            defenders.push(new Defender(gridPositionX, gridPositionY));
+            numberOfResources -= defenderCost;
+        }
+
+
     }
-    if (numberOfResources >= defenderCost) {
-        defenders.push(new Defender(gridPositionX, gridPositionY));
-        numberOfResources -= defenderCost;
-    }
-
-
-
 })
-
 canvas.addEventListener('click', function(e){
+    if (e.shiftKey) {
 
-    const gridPositionX = (e.x - canvasPosition.left) - ((e.x - canvasPosition.left)%cellSize) + cellGap;
-    const gridPositionY = (e.y - canvasPosition.top)- ((e.y - canvasPosition.top)%cellSize) + cellGap;
-    if (gridPositionY < cellSize) return;
-    for (let i = 0; i < icePeashooters.length; i++){
-        if (icePeashooters[i].x === gridPositionX && icePeashooters[i].y === gridPositionY) return;
-    }
-    if (numberOfResources >= defenderCost + 50) {
-        icePeashooters.push(new icePeashooter(gridPositionX, gridPositionY));
-        numberOfResources -= defenderCost + 50;
-    }
+        const gridPositionX = (e.x - canvasPosition.left) - ((e.x - canvasPosition.left)%cellSize) + cellGap;
+        const gridPositionY = (e.y - canvasPosition.top)- ((e.y - canvasPosition.top)%cellSize) + cellGap;
+        if (gridPositionY < cellSize) return;
+        for (let i = 0; i < icePeashooters.length; i++){
+            if (icePeashooters[i].x === gridPositionX && icePeashooters[i].y === gridPositionY) return;
+        }
+        if (numberOfResources >= defenderCost + 50) {
+            icePeashooters.push(new icePeashooter(gridPositionX, gridPositionY));
+            numberOfResources -= defenderCost + 50;
+        }
 
 // poop
+    }
+
 
 });
 
@@ -286,7 +298,6 @@ function handleDefenders(){
 
     }
 }
-
 function handleIceDefenders(){
     for (let i = 0; i < icePeashooters.length; i++){
 
@@ -319,6 +330,7 @@ function handleIceDefenders(){
 
 // Enemies
 
+//region ===== Enemies =====
 class Enemy {
     constructor(verticalPosition){
         this.x = canvas.width;
@@ -345,23 +357,25 @@ class Enemy {
 
 }
 
-
 function drawEnemy() {
     const blue = new Image()
     blue.src = "blue.JPG";
     ctx.drawImage(blue, this.x, this.y);
 
 }
-
 function drawEnemyRed() {
 
-   const red = new Image()
+    const red = new Image()
     red.src = "red.JPG";
     ctx.drawImage(red, this.x, this.y);
 
 }
+//endregion
 
-
+// ctrl + / to comment or uncomment selection
+// ctrl + shift + - to collapse all folds
+// ctrl + shift + + to expand all folds
+// shift + alt and drag mouse up or down to do vertical selection
 
 let verticalPosition = Math.floor(Math.random() * 5 + 1) * cellSize + cellGap;
 function handleEnemies(){
@@ -462,7 +476,9 @@ function animate(){
     handleResources();
     handleEnemies();
     handleDefenders();
+    handleIceDefenders();
     handleProjectiles();
+    handleIceProjectiles();
     handleGameStatus();
     frame++;
     console.log(frame);
