@@ -10,6 +10,8 @@ const gameGrid          = [];
 const icePeashooters    = [];
 const iceProjectiles    = [];
 const projectiles       = [];
+const critProjectiles    = [];
+const critIceProjectiles = [];
 const resources         = [];
 const selectedDefender  = 1;
 const winningScore      = 20;
@@ -90,9 +92,10 @@ class Projectile {
     }
 }
 
+
 class iceProjectile extends Projectile {
     constructor(x, y) {
-       super(x,y);
+        super(x, y);
 
         this.speed = 85;
         this.power = 25;
@@ -106,6 +109,41 @@ class iceProjectile extends Projectile {
         ctx.arc(this.x, this.y, this.width, 0, Math.PI * 2);
         ctx.fill();
     }
+}
+    class critProjectile extends iceProjectile {
+    constructor(x, y) {
+        super(x, y);
+
+        this.speed = 100;
+        this.power = 100;
+
+    }
+    update(){
+        this.x++;
+    }
+    draw(){
+        ctx.fillStyle = 'red';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.width, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+    class critIceProjectile extends critProjectile {
+    constructor(x, y) {
+        super(x,y);
+
+        this.speed = 95;
+        this.power = 250;
+    }
+        update(){
+            this.x++;
+        }
+        draw(){
+            ctx.fillStyle = 'purple';
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.width, 0, Math.PI * 2);
+            ctx.fill();
+        }
 }
 function handleProjectiles(){
     for (let i = 0; i < projectiles.length; i++){
@@ -142,6 +180,45 @@ function handleIceProjectiles(){
         };
         if ( iceProjectiles[i] &&  iceProjectiles[i].x > canvas.width - cellSize){
             iceProjectiles.splice(i, 1);
+            i--;
+        }
+    }
+}
+
+function handleCritIceProjectiles(){
+    for (let i = 0; i < critIceProjectiles.length; i++){
+        critIceProjectiles[i].update();
+        critIceProjectiles[i].draw();
+        for (let y = 0; y < enemies.length; y++){
+            if (enemies[y] &&  critIceProjectiles[i] && collision( critIceProjectiles[i], enemies[y])){
+                enemies[y].health -=  critIceProjectiles[i].power;
+
+                critIceProjectiles.splice(i, 1);
+                i--;
+
+            }
+        };
+        if ( critIceProjectiles[i] &&  critIceProjectiles[i].x > canvas.width - cellSize){
+            critIceProjectiles.splice(i, 1);
+            i--;
+        }
+    }
+}
+function handleCritProjectiles(){
+    for (let i = 0; i < critProjectiles.length; i++){
+        critProjectiles[i].update();
+        critProjectiles[i].draw();
+        for (let y = 0; y < enemies.length; y++){
+            if (enemies[y] &&  critProjectiles[i] && collision( critProjectiles[i], enemies[y])){
+                enemies[y].health -=  critProjectiles[i].power;
+
+                critProjectiles.splice(i, 1);
+                i--;
+
+            }
+        };
+        if ( critProjectiles[i] &&  critProjectiles[i].x > canvas.width - cellSize){
+            critProjectiles.splice(i, 1);
             i--;
         }
     }
@@ -357,6 +434,7 @@ class Enemy {
 
 }
 
+
 function drawEnemy() {
     const blue = new Image()
     blue.src = "blue.JPG";
@@ -467,6 +545,12 @@ function init(){
         }
     }
 }
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
+//
+
 init();
 function animate(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -477,8 +561,11 @@ function animate(){
     handleEnemies();
     handleDefenders();
     handleIceDefenders();
-    handleProjectiles();
-    handleIceProjectiles();
+    handleProjectiles()
+    handleIceProjectiles()
+
+
+
     handleGameStatus();
     frame++;
     console.log(frame);
