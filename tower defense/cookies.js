@@ -179,6 +179,13 @@ class Defender {
 
     }
 
+    drawAsShiny(){
+        const ramenShiny = new Image()
+        ramenShiny.src = "shiny1.png";
+        ctx.drawImage(ramenShiny, this.x, this.y);
+
+
+    }
 
 
 
@@ -212,6 +219,12 @@ class icePeashooter extends Defender {
         ctx.drawImage(ice, this.x, this.y);
     }
 
+    drawAsShiny(){
+        const iceShiny = new Image()
+        iceShiny.src = "shiny2.png";
+        ctx.drawImage(iceShiny, this.x, this.y);
+    }
+
 
 
 
@@ -230,6 +243,7 @@ class icePeashooter extends Defender {
 
     }
 }
+
 canvas.addEventListener('click', function(e){
     if (e.shiftKey === false) {
         const gridPositionX = (e.x - canvasPosition.left) - ((e.x - canvasPosition.left) % cellSize) + cellGap;
@@ -276,9 +290,51 @@ function dbl (){
 // canvas.addEventListener('dblclick', dbl)
 
 
+var urmom = 0;
 function handleDefenders(){
-    for (let i = 0; i < defenders.length; i++){
 
+    if(urmom === 1){
+        for (let i = 0; i < defenders.length; i++){
+            if (getRandomInt(15) === 1){
+                urmom = 1;
+            }
+            if (getRandomInt(15) === 1){
+                urmom2 = 1;
+            }
+
+            defenders[i].drawAsShiny();
+            defenders[i].update();
+
+            defenders[i].update();
+            if (enemyPositions.indexOf(defenders[i].y) !== -1) {
+                defenders[i].shooting = true;
+            } else {
+                defenders[i].shooting = false;
+                defenders[i].timer = 0;
+            }
+            for (let j = 0; j < enemies.length; j++){
+                if (defenders[i] && collision(defenders[i], enemies[j])){
+                    enemies[j].movement = 0;
+                    defenders[i].health--;
+                }
+                if (defenders[i] && defenders[i].health <= 0){
+                    defenders.splice(i, 1);
+                    i--;
+                    enemies[j].movement = enemies[j].speed;
+                }
+            }
+
+        }
+        urmom = 0;
+    }
+    else{
+    for (let i = 0; i < defenders.length; i++){
+        if (getRandomInt(15) === 1){
+            urmom = 1;
+        }
+        if (getRandomInt(15) === 1){
+            urmom2 = 1;
+        }
 
             defenders[i].draw();
             defenders[i].update();
@@ -303,10 +359,50 @@ function handleDefenders(){
         }
 
     }
+    }
 }
 function handleIceDefenders(){
-    for (let i = 0; i < icePeashooters.length; i++){
 
+    if (urmom2 === 1){
+        for (let i = 0; i < icePeashooters.length; i++){
+            if (getRandomInt(15) === 1){
+                urmom = 1;
+            }
+            if (getRandomInt(15) === 1){
+                urmom2 = 1;
+            }
+
+            icePeashooters[i].drawAsShiny();
+            icePeashooters[i].update();
+
+            icePeashooters[i].update();
+            if (enemyPositions.indexOf(icePeashooters[i].y) !== -1) {
+                icePeashooters[i].shooting = true;
+            } else {
+                icePeashooters[i].shooting = false;
+                icePeashooters[i].timer = 0;
+            }
+            for (let j = 0; j < enemies.length; j++){
+                if (icePeashooters[i] && collision(icePeashooters[i], enemies[j])){
+                    enemies[j].movement = 0;
+                    icePeashooters[i].health--;
+                }
+                if (icePeashooters[i] && icePeashooters[i].health <= 0){
+                    icePeashooters.splice(i, 1);
+                    i--;
+                    enemies[j].movement = enemies[j].speed;
+                }
+            }
+            urmom2 = 0;
+        }
+    } else {
+    for (let i = 0; i < icePeashooters.length; i++){
+        if (getRandomInt(15) === 1){
+            urmom = 1;
+        }
+        if (getRandomInt(15) === 1){
+            urmom2 = 1;
+        }
 
         icePeashooters[i].draw();
         icePeashooters[i].update();
@@ -330,6 +426,7 @@ function handleIceDefenders(){
             }
         }
 
+    }
     }
 }
 /*********************************************************************************/
@@ -466,7 +563,7 @@ let addResources = setInterval(function(){
 }, 2500);
 
 /*********************************************************************************/
-
+var urmom2 = 0;
 function init(){
     for (let y = cellSize; y < canvas.height; y += cellSize){
         for (let x = 0; x < canvas.width; x += cellSize){
@@ -477,6 +574,7 @@ function init(){
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
+
 
 //
 
