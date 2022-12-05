@@ -549,6 +549,7 @@ function handleGameStatus(){
         ctx.fillStyle = 'black';
         ctx.font = '60px Helvetica';
         ctx.fillText('YOU WIN with ' + score + ' points!', 130, 370);
+
     }
 }
 
