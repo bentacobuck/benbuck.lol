@@ -293,41 +293,7 @@ function dbl (){
 var urmom = 0;
 function handleDefenders(){
 
-    if(urmom === 1){
-        for (let i = 0; i < defenders.length; i++){
-            if (getRandomInt(15) === 1){
-                urmom = 1;
-            }
-            if (getRandomInt(15) === 1){
-                urmom2 = 1;
-            }
 
-            defenders[i].drawAsShiny();
-            defenders[i].update();
-
-            defenders[i].update();
-            if (enemyPositions.indexOf(defenders[i].y) !== -1) {
-                defenders[i].shooting = true;
-            } else {
-                defenders[i].shooting = false;
-                defenders[i].timer = 0;
-            }
-            for (let j = 0; j < enemies.length; j++){
-                if (defenders[i] && collision(defenders[i], enemies[j])){
-                    enemies[j].movement = 0;
-                    defenders[i].health--;
-                }
-                if (defenders[i] && defenders[i].health <= 0){
-                    defenders.splice(i, 1);
-                    i--;
-                    enemies[j].movement = enemies[j].speed;
-                }
-            }
-
-        }
-        urmom = 0;
-    }
-    else{
     for (let i = 0; i < defenders.length; i++){
         if (getRandomInt(15) === 1){
             urmom = 1;
@@ -359,43 +325,12 @@ function handleDefenders(){
         }
 
     }
-    }
+
 }
 function handleIceDefenders(){
 
-    if (urmom2 === 1){
-        for (let i = 0; i < icePeashooters.length; i++){
-            if (getRandomInt(15) === 1){
-                urmom = 1;
-            }
-            if (getRandomInt(15) === 1){
-                urmom2 = 1;
-            }
 
-            icePeashooters[i].drawAsShiny();
-            icePeashooters[i].update();
 
-            icePeashooters[i].update();
-            if (enemyPositions.indexOf(icePeashooters[i].y) !== -1) {
-                icePeashooters[i].shooting = true;
-            } else {
-                icePeashooters[i].shooting = false;
-                icePeashooters[i].timer = 0;
-            }
-            for (let j = 0; j < enemies.length; j++){
-                if (icePeashooters[i] && collision(icePeashooters[i], enemies[j])){
-                    enemies[j].movement = 0;
-                    icePeashooters[i].health--;
-                }
-                if (icePeashooters[i] && icePeashooters[i].health <= 0){
-                    icePeashooters.splice(i, 1);
-                    i--;
-                    enemies[j].movement = enemies[j].speed;
-                }
-            }
-            urmom2 = 0;
-        }
-    } else {
     for (let i = 0; i < icePeashooters.length; i++){
         if (getRandomInt(15) === 1){
             urmom = 1;
@@ -427,7 +362,7 @@ function handleIceDefenders(){
         }
 
     }
-    }
+
 }
 /*********************************************************************************/
 
