@@ -86,11 +86,6 @@ function upgrade () {
         spinner.classList.replace("spinner12","spinner13");
         spc = spc * 10000
     }
-
-    if (level === 1000000000) {
-        spinner.classList.replace("spinner12","spinner13");
-        spc = spc * 100000000000000
-    }
 }
 
 function upgradeTimesTen () {
@@ -159,11 +154,6 @@ function upgradeTimesTen () {
     if (level === 1000000) {
         spinner.classList.replace("spinner12","spinner13");
         spc = spc * 10000
-    }
-
-    if (level === 1000000000) {
-        spinner.classList.replace("spinner12","spinner13");
-        spc = spc * 100000000000000
     }
 }
 
