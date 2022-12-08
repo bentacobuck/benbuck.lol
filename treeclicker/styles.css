@@ -1,0 +1,58 @@
+
+
+
+html {
+
+
+    background-image: linear-gradient(pink,blue);
+    border: 15px solid teal;
+
+}
+
+
+
+div {
+    width: 50%;
+    border-color: gray;
+    font: 35px "Fira Sans", sans-serif
+
+}
+
+h1 {
+    width: 30%;
+    color: limegreen;
+    font: 35px "Fira Sans", sans-serif
+
+}
+
+h2 {
+    color: blueviolet;
+    font: 45px "Fira Sans", sans-serif
+
+}
+
+h3 {
+    font: 20px "Fira Sans", sans-serif
+}
+
+p {
+    font: 16px "Fira Sans", sans-serif
+}
+
+
+#clickAxolotl {
+    border: 10px solid darkcyan;
+
+    width: 300px;
+    display: list-item;
+}
+
+button {
+
+    height: 50px;
+    width: 300px;
+    display: list-item;
+}
+
+
+
