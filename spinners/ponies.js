@@ -6,7 +6,7 @@ var level2 = document.querySelector("#levels");
 var ascend = document.querySelector("#ascend");
 var rainbow = document.querySelector("#rainbow");
 
-var spinPoints2 = 0;
+var spinPoints2 = 0; //hi
 var spc = 1;
 var cost = 100;
 var level = 1;
