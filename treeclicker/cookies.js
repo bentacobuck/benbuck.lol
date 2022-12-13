@@ -141,8 +141,8 @@ clickAxolotlFiveTwo.addEventListener("click",(event) => {
 });
 
 clickAxolotlSix.addEventListener("click",(event) => {
-    if(cookies > 149) {
-        cookies = cookies - 150;
+    if(cookies > 7) {
+        cookies = cookies - 8;
         cookiesPerSecond += 1;
         var YoMAMA = new Audio('mixkit-game-ball-tap-2073.wav')
         YoMAMA.play();
@@ -153,14 +153,14 @@ clickAxolotlSix.addEventListener("click",(event) => {
 });
 
 clickAxolotlSeven.addEventListener("click",(event) => {
-    if(cookies > 1999) {
-        cookies = cookies - 2000;
-        cookiesPerSecond += 5;
+    if(cookies > 299) {
+        cookies = cookies - 300;
+        cookiesPerSecond += 2100;
         var YoMAMA = new Audio('mixkit-game-ball-tap-2073.wav')
         YoMAMA.play();
         updateDisplayWithoutAddingPoints();
     } else {
-        alert("Sorry, you don't have enough Axolotl Points, keep gaming!");
+
     }
 });
 
