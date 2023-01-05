@@ -20,33 +20,33 @@ html {
 
 h1 {
     color: green;
-    font: 1.4em "milky_coffeeregular";
+    font: 1.4em "latte_brownregular";
 
 }
 
 h2 {
     color: limegreen;
-    font: 1.4em "milky_coffeeregular";
+    font: 1.4em "latte_brownregular";
 
 }
 
 h3 {
     color: limegreen;
-    font: 1.4em "milky_coffeeregular";
+    font: 1.4em "latte_brownregular";
 
 }
 
 p {
-    font: 1.4em "milky_coffeeregular";
+    font: 1.4em "latte_brownregular";
 }
 
 a {
-    font: 1.4em "milky_coffeeregular";
+    font: 1.4em "latte_brownregular";
 }
 
 @font-face {
-    font-family: "milky_coffeeregular";
-    src: url("webfontkit-20221005-145252/milky_coffee.woff2") format("woff2"),
-    url("webfontkit-20221005-145252/milky_coffee.woff")
+    font-family: "latte_brownregular";
+    src: url("webfontkit-20230105-105149/latte__brown-webfont.woff2") format("woff2"),
+    url("webfontkit-20230105-105149/latte__brown-webfont.woff")
     format("woff");
 }
