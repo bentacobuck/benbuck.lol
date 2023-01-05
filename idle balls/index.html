@@ -29,8 +29,12 @@
     var lastCircleId = 1;
     var circles = [{lastX: 25, lastY: 0, id: 1, size: 50, color: "white"}];
     var points = 0;
+function playBackgroundMusic () {
+    var YoMAMA = new Audio('backgoundMusic.mp3');
+    YoMAMA.play();
+}
 
-
+playBackgroundMusic();
     const winHeight = window.innerHeight - 200;
     const winWidth = window.innerWidth - 20;
     const canvas = document.getElementById("canvas");

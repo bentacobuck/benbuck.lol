@@ -16,6 +16,7 @@ const resources         = [];
 const selectedDefender  = 1;
 const winningScore      = 20;
 
+
 let gameOver = false;
 let frame = 0;
 let score = 0;
@@ -31,6 +32,11 @@ const mouse = {
 
 canvas.width = 900;
 canvas.height = 600;
+
+function playBackgroundMusic () {
+    var YoMAMA = new Audio('backgoundMusic.mp3');
+    YoMAMA.play();
+}
 
 
 let canvasPosition = canvas.getBoundingClientRect();
