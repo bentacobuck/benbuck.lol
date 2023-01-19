@@ -91,7 +91,7 @@ class Projectile {
         this.x++;
     }
     draw(){
-        ctx.fillStyle = 'yellow';
+        ctx.fillStyle = 'green';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.width, 0, Math.PI * 2);
         ctx.fill();
@@ -179,7 +179,7 @@ class Defender {
 
     draw(){
         const ramen = new Image()
-        ramen.src = "bananya.png";
+        ramen.src = "peashooter.JPG";
         ctx.drawImage(ramen, this.x, this.y);
 
 
@@ -544,12 +544,12 @@ animate();
 function handleGameStatus(){
     ctx.fillStyle = 'white';
     ctx.font = '30px milky_coffeeregular';
-    ctx.fillText('Points: ' + score, 10, 35);
-    ctx.fillText('Sweets: ' + numberOfResources, 10, 85);
+    ctx.fillText('Coins: ' + score, 10, 35);
+    ctx.fillText('Sun: ' + numberOfResources, 10, 85);
     if (gameOver){
         ctx.fillStyle = 'black';
         ctx.font = '39px Helvetica';
-        ctx.fillText('THE ZOMBIE BANANYAS ATE YOUR CAKE!!!', 50, 390);
+        ctx.fillText('THE ZOMBIES ATE YOUR BRAINS!!!', 50, 390);
     }
     if (score >= winningScore && enemies.length == 0){
         ctx.fillStyle = 'black';
