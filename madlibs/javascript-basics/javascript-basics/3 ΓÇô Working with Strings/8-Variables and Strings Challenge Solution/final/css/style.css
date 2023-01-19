@@ -1,0 +1,19 @@
+
+body {
+  color: #fff;
+  font-family: "Gotham Rounded A", "Gotham Rounded B", "Gotham Rounded", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  background-color: #3659a2;
+}
+
+main {
+  width: 90%;
+  max-width: 1080px;
+  padding: 50px 0 0;
+  margin: 0 auto;
+}
+
+p {
+  font-size: 3em;
+  line-height: 1.5;
+}
